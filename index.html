@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebai Alimentos — Pães Árabes, Sírios e Folha desde 2005</title>
+<meta name="description" content="Kebai Alimentos: pão sírio, pão folha, pão árabe e torrada síria com qualidade artesanal desde 2005. Seja um revendedor.">
+<meta name="theme-color" content="#E00000">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ===== Paleta oficial Kebai ===== */
+  :root{
+    --vermelho:#E00000;
+    --vermelho-escuro:#B80000;
+    --laranja:#F89A0D;
+    --amarelo:#FFCE05;
+    --creme:#FBE3B3;
+    --creme-claro:#FFF6E3;
+    --marrom:#A3621F;
+    --vinho:#880000;
+    --texto:#3A2A1A;
+    --texto-suave:#6E5A45;
+    --branco:#FFFFFF;
+    --whats:#25D366;
+    --raio:22px;
+    --sombra:0 14px 40px -18px rgba(58,42,26,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--texto);background:var(--branco);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1160px,92%);margin-inline:auto}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.08;letter-spacing:-.01em}
+  section{scroll-margin-top:84px}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;font-family:inherit}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-red{background:var(--vermelho);color:#fff;box-shadow:0 10px 24px -10px rgba(224,0,0,.7)}
+  .btn-red:hover{background:var(--vermelho-escuro)}
+  .btn-yellow{background:var(--amarelo);color:var(--texto);box-shadow:0 10px 24px -12px rgba(160,110,0,.7)}
+  .btn-outline{background:transparent;border-color:var(--marrom);color:var(--marrom)}
+  .btn-outline:hover{background:var(--marrom);color:#fff}
+  .btn svg{width:20px;height:20px}
+
+  /* ===== Header ===== */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(163,98,31,.12)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand img{height:52px;width:auto}
+  .menu{display:flex;align-items:center;gap:34px;font-weight:600}
+  .menu a:not(.btn){position:relative;padding:6px 0}
+  .menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:3px;border-radius:3px;background:var(--amarelo);transition:width .2s}
+  .menu a:not(.btn):hover::after{width:100%}
+  .menu .btn{padding:11px 22px;font-size:.95rem}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{display:block;width:26px;height:3px;border-radius:3px;background:var(--texto);margin:5px 0}
+
+  /* ===== Hero ===== */
+  .hero{background:var(--creme-claro);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-180px;top:-200px;width:620px;height:620px;border-radius:50%;background:var(--creme);opacity:.7}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding:72px 0 88px}
+  .hero .eyebrow{background:var(--amarelo);color:var(--texto);padding:8px 16px;border-radius:999px}
+  .hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:800;margin:22px 0 20px;color:var(--texto)}
+  .hero h1 .mark{color:var(--vermelho);position:relative;white-space:nowrap}
+  .hero h1 .mark::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.26em;background:var(--amarelo);z-index:-1;border-radius:6px}
+  .hero h1 .mark{z-index:0}
+  .hero p.lead{font-size:1.15rem;color:var(--texto-suave);max-width:500px;margin-bottom:34px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-visual{position:relative;display:grid;place-items:center;min-height:500px}
+  .blob{position:absolute;width:440px;height:440px;border-radius:50%;background:var(--amarelo)}
+  .sq{position:absolute;border-radius:14px}
+  .sq1{width:64px;height:64px;background:var(--vermelho);bottom:20px;right:70px;transform:rotate(-10deg)}
+  .sq2{width:52px;height:52px;background:var(--laranja);bottom:60px;left:20px;transform:rotate(12deg)}
+  .sq3{width:44px;height:44px;background:var(--marrom);top:60px;right:30px;transform:rotate(18deg)}
+  .hero-visual .pack{position:relative;width:min(330px,72%);filter:drop-shadow(0 30px 30px rgba(58,42,26,.35));transform:rotate(-4deg);animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:rotate(-4deg) translateY(-12px)}}
+  .tag{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--sombra);display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem}
+  .tag i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;color:#fff}
+  .tag1{bottom:46px;right:0}
+  .tag1 i{background:var(--vermelho)}
+  .tag2{top:90px;left:0}
+  .tag2 i{background:var(--laranja)}
+
+  /* ===== Diferenciais ===== */
+  .diff{background:var(--vermelho);color:#fff}
+  .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:38px 0}
+  .diff-item{display:flex;gap:14px;align-items:flex-start}
+  .diff-ico{flex:0 0 48px;height:48px;border-radius:14px;display:grid;place-items:center}
+  .diff-ico svg{width:24px;height:24px}
+  .diff-item h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;font-weight:800;margin-bottom:2px}
+  .diff-item p{font-size:.9rem;opacity:.9;line-height:1.45}
+
+  /* ===== Títulos de seção ===== */
+  .sec{padding:96px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+  .sec-head .eyebrow{color:var(--vermelho)}
+  .sec-head h2{font-size:clamp(2.1rem,4vw,3rem);margin:10px 0 12px}
+  .sec-head p{color:var(--texto-suave);font-size:1.05rem}
+
+  /* ===== Produtos ===== */
+  .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:34px}
+  .tab{font-family:inherit;font-weight:700;font-size:1rem;padding:12px 24px;border-radius:999px;border:2px solid var(--c);background:#fff;color:var(--texto);cursor:pointer;transition:all .2s}
+  .tab:hover{background:color-mix(in srgb,var(--c) 15%,#fff)}
+  .tab.active{background:var(--c);color:var(--tc,#fff)}
+  .showcase{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border-radius:32px;overflow:hidden;background:#fff;box-shadow:var(--sombra);border:1px solid rgba(163,98,31,.12);transition:opacity .2s, transform .2s}
+  .show-img{background:var(--pc,var(--amarelo));display:grid;place-items:center;padding:44px;position:relative;min-height:440px;transition:background .3s}
+  .show-img::before{content:"";position:absolute;width:76%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.35)}
+  /* Fotos oficiais das embalagens (fundo transparente) direto no painel colorido */
+  .pack-card{--ph:360px;position:relative;display:flex;gap:5%;align-items:flex-end;justify-content:center;max-width:100%}
+  .pack-card img{display:block;width:auto;height:auto;max-height:var(--ph);max-width:100%;min-width:0;filter:drop-shadow(0 22px 22px rgba(58,42,26,.35))}
+  .pack-card.duo img{max-width:47%}
+  .pack-card.duo img:first-child{transform:rotate(-4deg)}
+  .pack-card.duo img:last-child{transform:rotate(4deg)}
+
+  /* Faixa com a linha completa */
+  .linha{margin-top:34px;border-radius:32px;overflow:hidden;background:var(--marrom);box-shadow:var(--sombra)}
+  .linha{display:grid;place-items:center}
+  .linha img{width:100%;max-width:820px;height:auto}
+
+  /* ===== Receitas ===== */
+  .recipes{background:var(--creme)}
+  .rec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .rec-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 14px 34px -20px rgba(58,42,26,.45);display:flex;flex-direction:column;transition:transform .2s}
+  .rec-card:hover{transform:translateY(-4px)}
+  .rec-img{background:#fff;border-bottom:6px solid var(--rc);overflow:hidden}
+  .rec-img img{width:100%;aspect-ratio:4/3;object-fit:contain;padding:10px;transition:transform .4s}
+  .rec-card:hover .rec-img img{transform:scale(1.05)}
+  .rec-txt{padding:20px 22px 24px}
+  .rec-tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--marrom);background:var(--creme-claro);border:1px solid var(--creme);padding:5px 11px;border-radius:999px}
+  .rec-txt h3{font-size:1.3rem;margin:12px 0 6px}
+  .rec-txt p{font-size:.94rem;color:var(--texto-suave);line-height:1.5}
+  .rec-cta{text-align:center;margin-top:38px}
+  .rec-hint{display:none;text-align:center;font-size:.85rem;font-weight:700;color:var(--marrom);margin:-14px 0 14px}
+  .show-txt{padding:52px 50px;display:flex;flex-direction:column;justify-content:center}
+  .badge{align-self:flex-start;background:var(--creme);color:var(--marrom);font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+  .show-txt h3{font-size:2.3rem;margin:16px 0 12px}
+  .show-txt p{color:var(--texto-suave);margin-bottom:22px}
+  .vlabel{font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+  .chip{font-size:.88rem;font-weight:600;padding:8px 14px;border-radius:10px;background:var(--creme-claro);border:1px solid var(--creme)}
+  .show-btns{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ===== Onde encontrar ===== */
+  .where{background:var(--creme-claro)}
+  .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:920px;margin:0 auto 34px}
+  .logo-card{background:#fff;border-radius:18px;height:110px;display:grid;place-items:center;padding:20px;box-shadow:0 8px 24px -16px rgba(58,42,26,.35);transition:transform .2s}
+  .logo-card:hover{transform:translateY(-4px)}
+  .logo-card img{max-height:72px;max-width:100%;width:auto;object-fit:contain}
+  .where-cta{text-align:center}
+
+  /* ===== Revenda ===== */
+  .b2b{background:var(--vermelho);color:#fff;position:relative;overflow:hidden}
+  .b2b::before{content:"";position:absolute;left:-220px;bottom:-280px;width:440px;height:440px;border-radius:50%;background:var(--laranja);opacity:.6}
+  .b2b::after{content:"";position:absolute;right:42%;top:-90px;width:180px;height:180px;border-radius:50%;background:var(--amarelo);opacity:.9}
+  .b2b-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .b2b .eyebrow{color:var(--amarelo)}
+  .b2b h2{font-size:clamp(2.1rem,4vw,3.1rem);margin:12px 0 16px}
+  .b2b p.lead{opacity:.95;font-size:1.08rem;margin-bottom:26px;max-width:480px}
+  .checks{list-style:none;display:grid;gap:14px}
+  .checks li{display:flex;gap:12px;align-items:center;font-weight:600}
+  .checks li b{flex:0 0 28px;height:28px;border-radius:50%;background:var(--amarelo);color:var(--vermelho);display:grid;place-items:center;font-size:.9rem}
+  .form-card{background:#fff;color:var(--texto);border-radius:28px;padding:38px;box-shadow:0 30px 60px -24px rgba(0,0,0,.45)}
+  .form-card h3{font-size:1.7rem;margin-bottom:6px}
+  .form-card .sub{color:var(--texto-suave);font-size:.94rem;margin-bottom:22px}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave)}
+  .field input,.field select{font-family:inherit;font-size:1rem;padding:13px 14px;border-radius:12px;border:2px solid var(--creme);background:var(--creme-claro);color:var(--texto);outline:none;transition:border .2s}
+  .field input:focus,.field select:focus{border-color:var(--laranja);background:#fff}
+  .form-card .btn{width:100%;margin-top:20px}
+  .fmsg{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;font-size:.92rem;font-weight:600}
+  .fmsg.ok{display:block;background:#EAF8EE;color:#1E7A3C}
+  .fmsg.err{display:block;background:#FDECEC;color:var(--vermelho-escuro)}
+
+  /* ===== Footer ===== */
+  footer{background:var(--creme);color:var(--texto)}
+  .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:40px 0}
+  .foot img{height:58px;width:auto}
+  .contacts{display:flex;flex-wrap:wrap;gap:22px;font-weight:600}
+  .contacts a{display:flex;align-items:center;gap:8px}
+  .contacts svg{width:18px;height:18px;color:var(--vermelho)}
+  .social{display:flex;gap:10px}
+  .social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--vermelho);color:#fff;transition:transform .2s}
+  .social a:nth-child(2){background:var(--laranja)}
+  .social a:hover{transform:translateY(-3px)}
+  .social svg{width:20px;height:20px}
+  .legal{border-top:1px solid rgba(163,98,31,.25);padding:18px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.86rem;color:var(--texto-suave)}
+  .legal nav{display:flex;gap:18px}
+
+  /* ===== WhatsApp flutuante ===== */
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--whats);color:#fff;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.7);transition:transform .2s}
+  .wa-float:hover{transform:scale(1.07)}
+  .wa-float svg{width:30px;height:30px}
+
+  /* ===== Modal ===== */
+  .modal{position:fixed;inset:0;z-index:80;background:rgba(58,42,26,.55);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:26px;max-width:560px;width:100%;max-height:86vh;overflow:auto;padding:34px;position:relative}
+  .modal-box h3{font-size:1.6rem;margin-bottom:18px;padding-right:40px}
+  .modal-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:0;background:var(--creme-claro);font-size:1.4rem;cursor:pointer;color:var(--texto)}
+  .mitem{padding:14px 0;border-bottom:1px solid var(--creme)}
+  .mitem:last-child{border:0}
+  .mitem h4{font-size:1rem;font-weight:800;margin-bottom:2px}
+  .mitem p{font-size:.92rem;color:var(--texto-suave)}
+
+  /* ===== Animação de entrada ===== */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== Responsivo ===== */
+  @media (max-width:980px){
+    .menu{position:fixed;top:76px;left:0;right:0;background:#fff;flex-direction:column;gap:6px;padding:16px 4% 24px;border-bottom:1px solid var(--creme);transform:translateY(-130%);transition:transform .25s;box-shadow:var(--sombra)}
+    .menu.open{transform:none}
+    .menu a:not(.btn){padding:12px 0;width:100%;text-align:center}
+    .burger{display:block}
+    .hero-grid,.b2b-grid,.showcase{grid-template-columns:1fr}
+    .hero-grid{padding:48px 0 64px;text-align:center}
+    .hero p.lead{margin-inline:auto}
+    .hero-ctas{justify-content:center}
+    .hero-visual{min-height:400px}
+    .blob{width:340px;height:340px}
+    .diff-grid{grid-template-columns:1fr 1fr}
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .rec-grid{grid-template-columns:1fr 1fr}
+    .show-img{min-height:340px}
+    .show-txt{padding:36px 28px}
+    .b2b::after{display:none}
+  }
+  @media (max-width:760px){
+    .sec{padding:64px 0}
+    .sec-head{margin-bottom:32px}
+    /* Hero mais compacto */
+    .hero-grid{padding:36px 0 48px;gap:20px}
+    .hero-ctas .btn{width:100%}
+    .hero-visual{min-height:330px}
+    .blob{width:280px;height:280px}
+    /* Diferenciais em grade 2x2 */
+    .diff-grid{grid-template-columns:1fr 1fr;gap:22px 14px;padding:30px 0}
+    .diff-item{flex-direction:column;align-items:center;text-align:center;gap:10px}
+    .diff-ico{flex:none;width:48px;height:48px}
+    .diff-item h3{font-size:.95rem}
+    .diff-item p{font-size:.82rem}
+    /* Abas de produtos em grade 2x2 */
+    .tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .tab{padding:12px 10px;font-size:.95rem}
+    .show-txt h3{font-size:1.9rem}
+    .show-btns .btn{width:100%}
+    .logos{grid-template-columns:1fr 1fr}
+    /* Receitas em carrossel: arraste para o lado */
+    .rec-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -4.35%;padding:4px 4.35% 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .rec-grid::-webkit-scrollbar{display:none}
+    .rec-card{flex:0 0 78%;scroll-snap-align:center}
+    .rec-hint{display:block}
+    .pack-card{--ph:300px}
+    .fgrid{grid-template-columns:1fr}
+    .form-card{padding:26px}
+    .foot{flex-direction:column;text-align:center}
+    .contacts{justify-content:center;flex-direction:column;align-items:center;gap:4px}
+    .contacts a{padding:10px 6px}
+    .legal{justify-content:center;text-align:center;padding-bottom:96px}
+    .tag2{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="brand" aria-label="Kebai Alimentos — início"><img src="img/logo.png" alt="Kebai Alimentos"></a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu">
+      <a href="#produtos">Produtos</a>
+      <a href="#receitas">Receitas</a>
+      <a href="#onde-encontrar">Onde Encontrar</a>
+      <a href="#revenda">Seja Revendedor</a>
+      <a class="btn btn-red" data-wa="contato" href="#">Fale Conosco</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">★ Qualidade artesanal desde 2005</span>
+        <h1>Tradição que transforma <span class="mark">cada receita.</span></h1>
+        <p class="lead">Pão sírio, pão folha, pão árabe e torrada síria com leveza, sabor e o toque árabe perfeito para a sua mesa — e para o seu negócio.</p>
+        <div class="hero-ctas">
+          <a href="#produtos" class="btn btn-red">Conheça nossos produtos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#revenda" class="btn btn-outline">Seja um revendedor</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="blob"></div>
+        <span class="sq sq1"></span><span class="sq sq2"></span><span class="sq sq3"></span>
+        <img class="pack" src="img/produto.webp" alt="Pacote de Pão Sírio Integral Kebai 250g">
+        <div class="tag tag1"><i>✓</i>100% fermentação natural</div>
+        <div class="tag tag2"><i>♥</i>Massa macia e autêntica</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="diff" aria-label="Diferenciais Kebai">
+    <div class="wrap diff-grid">
+      <div class="diff-item">
+        <div class="diff-ico" style="background:var(--amarelo);color:var(--vermelho)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg>
+        </div>
+        <div><h3>Desde 2005</h3><p>Duas décadas de tradição artesanal.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-ico" style="background:var(--amarelo);color:var(--vermelho)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10Z"/></svg>
+        </div>
+        <div><h3>Receita autêntica</h3><p>Ingredientes selecionados e fermentação natural.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-ico" style="background:var(--amarelo);color:var(--vermelho)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        </div>
+        <div><h3>Entrega programada</h3><p>Reposição contínua no seu ponto de venda.</p></div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-ico" style="background:var(--amarelo);color:var(--vermelho)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></svg>
+        </div>
+        <div><h3>Alto giro</h3><p>Margem atrativa e validade segura na gôndola.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section class="sec" id="produtos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Linha completa</span>
+        <h2>Nossos Produtos</h2>
+        <p>Escolha uma categoria e descubra os formatos ideais para a sua mesa ou o seu comércio.</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-cat="pao-sirio" style="--c:var(--vermelho)" role="tab" aria-selected="true">Pão Sírio</button>
+        <button class="tab" data-cat="pao-folha" style="--c:var(--amarelo);--tc:var(--texto)" role="tab" aria-selected="false">Pão Folha</button>
+        <button class="tab" data-cat="pao-arabe" style="--c:var(--laranja)" role="tab" aria-selected="false">Pão Árabe</button>
+        <button class="tab" data-cat="torrada-siria" style="--c:var(--marrom)" role="tab" aria-selected="false">Torrada Síria</button>
+      </div>
+
+      <article class="showcase reveal" id="showcase">
+        <div class="show-img" id="showImgBox">
+          <div class="pack-card duo" id="showCard"><img src="img/pao-sirio-tradicional-250g.png" alt="Pão Sírio Tradicional Kebai 250g"><img src="img/pao-sirio-integral-250g.png" alt="Pão Sírio Integral Kebai 250g"></div>
+        </div>
+        <div class="show-txt">
+          <span class="badge" id="showBadge">Mais vendido • Tradição</span>
+          <h3 id="showTitle">Pão Sírio Kebai</h3>
+          <p id="showDesc">Massa leve, assada na temperatura certa para abrir perfeitamente ao meio ou acompanhar pastas orientais.</p>
+          <div class="vlabel">Versões disponíveis</div>
+          <div class="chips" id="showChips"></div>
+          <div class="show-btns">
+            <button class="btn btn-red" id="openModal">Ver detalhes das versões</button>
+            <a class="btn btn-outline" data-wa="catalogo" href="#">Pedir catálogo 2026</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="linha reveal"><img src="img/linha-kebai.jpg" alt="Linha completa Kebai: Pão Sírio, Pão Folha, Pão Árabe e Torrada Síria" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- RECEITAS -->
+  <section class="sec recipes" id="receitas">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Receitas e dicas</span>
+        <h2>Sugestões de cardápio</h2>
+        <p>Ideias práticas e saborosas para preparar com os Produtos Kebai.</p>
+      </div>
+      <p class="rec-hint">Arraste para o lado para ver mais →</p>
+      <div class="rec-grid reveal">
+        <article class="rec-card" style="--rc:var(--laranja)">
+          <div class="rec-img"><img src="img/receita-wrap-de-frango.jpg" alt="Wrap de frango com Pão Folha Kebai" loading="lazy"></div>
+          <div class="rec-txt"><span class="rec-tag">Pão Folha</span><h3>Wrap de frango</h3><p>Wrap de frango com Pão Folha Kebai e mix de folhas frescas.</p></div>
+        </article>
+        <article class="rec-card" style="--rc:var(--vermelho)">
+          <div class="rec-img"><img src="img/receita-wrap-de-frango-com-legumes.jpg" alt="Wrap de frango com legumes no Pão Folha Kebai" loading="lazy"></div>
+          <div class="rec-txt"><span class="rec-tag">Pão Folha</span><h3>Wrap de frango com legumes</h3><p>Pão Folha Kebai recheado com frango, alface, tomate, cebola roxa, abacate e molho.</p></div>
+        </article>
+        <article class="rec-card" style="--rc:var(--marrom)">
+          <div class="rec-img"><img src="img/receita-pao-recheado-com-ovos.jpg" alt="Pão Árabe Kebai recheado com ovos mexidos" loading="lazy"></div>
+          <div class="rec-txt"><span class="rec-tag">Pão Árabe</span><h3>Pão árabe recheado com ovos</h3><p>Pão Árabe Kebai recheado com ovos mexidos, presunto e queijo. Um café da manhã prático.</p></div>
+        </article>
+        <article class="rec-card" style="--rc:var(--amarelo)">
+          <div class="rec-img"><img src="img/receita-torrada-siria-com-homus.jpg" alt="Torrada Síria Kebai com homus" loading="lazy"></div>
+          <div class="rec-txt"><span class="rec-tag">Torrada Síria</span><h3>Torrada síria com homus</h3><p>Torrada Síria Kebai acompanhada de homus, a tradicional pasta de grão-de-bico.</p></div>
+        </article>
+      </div>
+      <div class="rec-cta">
+        <a class="btn btn-red" href="https://www.instagram.com/produtoskebai/" target="_blank" rel="noopener">Mais receitas no nosso Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONDE ENCONTRAR -->
+  <section class="sec where" id="onde-encontrar">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Presença nacional</span>
+        <h2>Onde Encontrar</h2>
+        <p>Estamos nas principais redes de supermercados, empórios e hortifrutis.</p>
+      </div>
+      <div class="logos reveal">
+        <div class="logo-card"><img src="img/festval.png" alt="Festval" style="max-height:38px"></div>
+        <div class="logo-card"><img src="img/oba.png" alt="Oba Hortifruti"></div>
+        <div class="logo-card"><img src="img/verdemar.png" alt="Verdemar Supermercado & Padaria" style="max-height:80px"></div>
+        <div class="logo-card"><img src="img/pao-de-acucar.png" alt="Pão de Açúcar" style="max-height:80px"></div>
+      </div>
+      <div class="where-cta">
+        <a class="btn btn-yellow" data-wa="ondeComprar" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Encontrar o ponto de venda mais próximo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVENDA -->
+  <section class="sec b2b" id="revenda">
+    <div class="wrap b2b-grid">
+      <div class="reveal">
+        <span class="eyebrow">Atacado & distribuição</span>
+        <h2>Leve a Kebai para o seu negócio</h2>
+        <p class="lead">Produtos de alta saída, ótima margem e validade segura. Atendemos supermercados, mercearias, lanchonetes e food service em todo o país.</p>
+        <ul class="checks">
+          <li><b>✓</b>Tabela com margens atrativas para revendedores</li>
+          <li><b>✓</b>Entregas pontuais e reposição programada</li>
+          <li><b>✓</b>Suporte comercial direto com especialistas</li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>Solicite uma proposta</h3>
+        <p class="sub">Nossa equipe comercial retorna em até 24 horas úteis.</p>
+        <form id="b2bForm" novalidate>
+          <div class="fgrid">
+            <div class="field full"><label for="fNome">Seu nome</label><input id="fNome" required placeholder="Ex.: Roberto Silva"></div>
+            <div class="field full"><label for="fEmpresa">Empresa / CNPJ</label><input id="fEmpresa" required placeholder="Ex.: Mercado Santa Luzia"></div>
+            <div class="field"><label for="fFone">WhatsApp</label><input id="fFone" type="tel" required placeholder="(00) 00000-0000"></div>
+            <div class="field"><label for="fCidade">Cidade / Estado</label><input id="fCidade" required placeholder="Ex.: Curitiba / PR"></div>
+            <div class="field full"><label for="fTipo">Tipo de negócio</label>
+              <select id="fTipo">
+                <option>Supermercado / Empório</option>
+                <option>Padaria / Mercearia</option>
+                <option>Restaurante / Lanchonete</option>
+                <option>Distribuidora / Atacadista</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-red">Enviar pelo WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <div class="fmsg" id="fMsg" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <img src="img/logo.png" alt="Kebai Alimentos">
+    <div class="contacts">
+      <a data-wa="contato" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+        (34) 98408-8597
+      </a>
+      <a href="mailto:comercial@kebai.com.br">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        comercial@kebai.com.br
+      </a>
+    </div>
+    <div class="social">
+      <a href="https://www.instagram.com/produtoskebai/" target="_blank" rel="noopener" aria-label="Instagram da Kebai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
+      <a href="https://www.facebook.com/paofolha.kebai" target="_blank" rel="noopener" aria-label="Facebook da Kebai"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5Z"/></svg></a>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© 2005–2026 Kebai Alimentos Indústria e Comércio. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="contato" href="#" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4ZM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+</a>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="closeModal" aria-label="Fechar">×</button>
+    <h3 id="modalTitle"></h3>
+    <div id="modalItems"></div>
+  </div>
+</div>
+
+<script>
+  // ===== Configuração =====
+  const WHATS = '5534984088597';
+  const MSG = {
+    contato: 'Olá! Gostaria de saber mais sobre os produtos Kebai.',
+    catalogo: 'Olá! Gostaria de receber o Catálogo Kebai 2026.',
+    ondeComprar: 'Olá! Onde encontro os produtos Kebai perto de mim?'
+  };
+  const waLink = t => `https://wa.me/${WHATS}?text=${encodeURIComponent(t)}`;
+  document.querySelectorAll('[data-wa]').forEach(a => {
+    a.href = waLink(MSG[a.dataset.wa] || MSG.contato);
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+
+  // ===== Catálogo =====
+  // "fotos": embalagens oficiais Kebai (uma ou duas por linha), exibidas no cartão branco do painel.
+  const catalogo = {
+    'pao-sirio': {
+      titulo: 'Pão Sírio Kebai', badge: 'Mais vendido • Tradição', cor: 'var(--vermelho)', fotos: [['img/pao-sirio-tradicional-250g.png', 'Pão Sírio Tradicional Kebai 250g'], ['img/pao-sirio-integral-250g.png', 'Pão Sírio Integral Kebai 250g']],
+      desc: 'Massa leve, assada na temperatura certa para abrir perfeitamente ao meio ou acompanhar pastas orientais. Receita tradicional de família e fermentação controlada.',
+      // Versões conforme o Catálogo Digital 2026 Produtos Kebai
+      versoes: [
+        ['Pão Sírio Tradicional Mini 250g', '25 a 30 unidades • validade 30 dias • caixa com 12 pacotes.'],
+        ['Pão Sírio Integral Mini 250g', '44,6% integral, fonte de fibras • 25 a 30 unidades • validade 30 dias • caixa com 12 pacotes.'],
+        ['Pão Sírio Tradicional Mini 160g', '18 a 21 unidades • validade 30 dias • caixa com 20 pacotes.'],
+        ['Pão Sírio Integral Mini 160g', '18 a 21 unidades • validade 30 dias • caixa com 20 pacotes.'],
+        ['Pão Sírio Artesanal Tradicional 250g', '25 a 30 unidades • validade 30 dias • caixa com 15 pacotes.'],
+        ['Pão Sírio Artesanal Tradicional PP 250g', '10 unidades • validade 30 dias • caixa com 15 pacotes.']
+      ]
+    },
+    'pao-folha': {
+      titulo: 'Pão Folha Kebai', badge: 'Ideal para enrolar • Não quebra', cor: 'var(--amarelo)', fotos: [['img/pao-folha-tradicional-250g.png', 'Pão Folha Tradicional Kebai 250g'], ['img/pao-folha-integral-250g.png', 'Pão Folha Integral Kebai 250g']],
+      desc: 'O autêntico pão folha, ultrafino e elástico. Não quebra ao enrolar: perfeito para wraps, shawarmas e burritos, quentes ou frios.',
+      versoes: [
+        ['Pão Folha Tradicional 250g – 4 folhas', 'Validade 30 dias em temperatura ambiente ou 60 dias refrigerado • caixa com 15 pacotes.'],
+        ['Pão Folha Integral 250g – 4 folhas', '50,3% integral, fonte de fibras • validade 30 dias (ambiente) ou 60 dias (refrigerado) • caixa com 15 pacotes.'],
+        ['Pão Folha Fastfood Tradicional – 20 folhas', 'Pacote de 1,7 kg para lanchonetes e food service • validade 30 dias (ambiente) ou 60 dias (refrigerado) • caixa com 6 pacotes.'],
+        ['Pão Folha Fastfood Integral – 20 folhas', 'Pacote de 1,7 kg para lanchonetes e food service • validade 30 dias (ambiente) ou 60 dias (refrigerado) • caixa com 6 pacotes.']
+      ]
+    },
+    'pao-arabe': {
+      titulo: 'Pão Árabe Kebai', badge: 'Massa aveludada • Receita original', cor: 'var(--laranja)', fotos: [['img/pao-arabe-230g.png', 'Pão Árabe Tradicional Kebai 230g', 0.66], ['img/pao-arabe-tradicional-400g.png', 'Pão Árabe Tradicional Kebai 400g']],
+      desc: 'Massa macia e aerada com o verdadeiro sabor do Oriente Médio. Excelente para tostar, grelhar na chapa ou servir com queijos e azeite.',
+      versoes: [
+        ['Pão Árabe Tradicional 230g', '6 unidades • validade 21 dias • caixa com 20 pacotes.'],
+        ['Pão Árabe Tradicional 400g', '6 unidades maiores • validade 21 dias • caixa com 12 pacotes.']
+      ]
+    },
+    'torrada-siria': {
+      titulo: 'Torrada Síria Crocante', badge: 'Crocância única • Aperitivo', cor: 'var(--marrom)', fotos: [['img/torrada-siria-tradicional-120g.png', 'Torrada Síria Tradicional Kebai 120g']],
+      desc: 'Fatias finas e crocantes de pão sírio. O par perfeito para coalhada seca, homus, patês e antepastos.',
+      versoes: [
+        ['Torrada Síria Tradicional 120g', 'Zero lactose e sem adição de ovos • validade 120 dias • caixa com 24 pacotes.']
+      ]
+    }
+  };
+  let atual = 'pao-sirio';
+  const $ = id => document.getElementById(id);
+
+  function mostrar(cat) {
+    const c = catalogo[cat]; if (!c) return; atual = cat;
+    const box = $('showcase');
+    box.style.opacity = '.3'; box.style.transform = 'translateY(6px)';
+    setTimeout(() => {
+      $('showTitle').textContent = c.titulo;
+      $('showBadge').textContent = c.badge;
+      $('showDesc').textContent = c.desc;
+      $('showCard').innerHTML = c.fotos.map(f => `<img src="${f[0]}" alt="${f[1]}"${f[2] ? ` style="max-height:calc(var(--ph) * ${f[2]})"` : ''}>`).join('');
+      $('showCard').classList.toggle('duo', c.fotos.length > 1);
+      $('showImgBox').style.setProperty('--pc', c.cor);
+      $('showChips').innerHTML = c.versoes.map(v => `<span class="chip">${v[0]}</span>`).join('');
+      box.style.opacity = '1'; box.style.transform = 'none';
+    }, 160);
+  }
+  document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected', 'false'); });
+    b.classList.add('active'); b.setAttribute('aria-selected', 'true');
+    mostrar(b.dataset.cat);
+  }));
+  mostrar('pao-sirio');
+
+  // ===== Modal =====
+  const modal = $('modal');
+  $('openModal').addEventListener('click', () => {
+    const c = catalogo[atual];
+    $('modalTitle').textContent = c.titulo + ' — todas as versões';
+    $('modalItems').innerHTML = c.versoes.map(v => `<div class="mitem"><h4>${v[0]}</h4><p>${v[1]}</p></div>`).join('');
+    modal.classList.add('open'); document.body.style.overflow = 'hidden';
+  });
+  const fechar = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+  $('closeModal').addEventListener('click', fechar);
+  modal.addEventListener('click', e => { if (e.target === modal) fechar(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') fechar(); });
+
+  // ===== Menu mobile =====
+  const menu = $('menu'), burger = $('burger');
+  burger.addEventListener('click', () => {
+    const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // ===== Formulário → WhatsApp =====
+  $('b2bForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = id => $(id).value.trim();
+    const msg = $('fMsg');
+    if (!v('fNome') || !v('fEmpresa') || !v('fFone') || !v('fCidade')) {
+      msg.className = 'fmsg err'; msg.textContent = 'Preencha todos os campos, por favor.'; return;
+    }
+    const texto = `Olá! Quero revender os produtos Kebai.\n\n*Nome:* ${v('fNome')}\n*Empresa/CNPJ:* ${v('fEmpresa')}\n*WhatsApp:* ${v('fFone')}\n*Cidade/Estado:* ${v('fCidade')}\n*Tipo de negócio:* ${$('fTipo').value}`;
+    const url = waLink(texto);
+    msg.className = 'fmsg ok';
+    msg.innerHTML = `Tudo certo! Se o WhatsApp não abrir sozinho, <a href="${url}" target="_blank" rel="noopener" style="text-decoration:underline">clique aqui para enviar</a>.`;
+    try { window.open(url, '_blank'); } catch (_) {}
+  });
+
+  // ===== Animação ao rolar =====
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { threshold: .12 }) : null;
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>
